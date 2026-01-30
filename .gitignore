@@ -8,3 +8,5 @@ node_modules/
 *.pyo
 *.pyd
 *.sqlite3
+data
+data/
