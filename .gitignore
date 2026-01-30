@@ -10,3 +10,5 @@ node_modules/
 *.sqlite3
 data
 data/
+logs/
+RAG_Medcal_Chatbot.egg-info/
