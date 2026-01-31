@@ -11,4 +11,5 @@ node_modules/
 data
 data/
 logs/
-RAG_Medcal_Chatbot.egg-info/
+Medical_rag_chatbot.egg-info/
+Medical_rag_chatbot.egg-info
