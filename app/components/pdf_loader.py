@@ -27,4 +27,24 @@ def load_pdfs_from_directory():
         error_message=CustomException("failed to load pdf",e)
         logger.error(str(error_message))
         return []
+    
 
+def create_text_chunks(documents):
+    try:
+        if not documents:
+            raise CustomException("no documents found")
+        logger.info(f"splitting {len(documents)} documents into chunks")
+
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
+
+        text_chunks=text_splitter.split_documents(documents)
+        logger,info(f"generated {len(text_chunks)} text chunks")
+        return text_chunks
+   
+    except Exception as e:
+        error_message=CustomException("failed to generate chunks",e)
+        logger.error(str(error_message))
+        return []
+
+
+    
