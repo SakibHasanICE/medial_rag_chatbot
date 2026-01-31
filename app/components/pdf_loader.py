@@ -38,7 +38,7 @@ def create_text_chunks(documents):
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
 
         text_chunks=text_splitter.split_documents(documents)
-        logger,info(f"generated {len(text_chunks)} text chunks")
+        logger.info(f"generated {len(text_chunks)} text chunks")
         return text_chunks
    
     except Exception as e:
