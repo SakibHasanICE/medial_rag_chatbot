@@ -14,3 +14,5 @@ logs/
 Medical_rag_chatbot.egg-info/
 Medical_rag_chatbot.egg-info
 logs
+vectorstore/
+vectorstore
