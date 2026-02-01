@@ -1,5 +1,5 @@
 import os
-from lanchain_community.document_loaders import DirectoryLoader,PyPDFLoader
+from langchain_community.document_loaders import DirectoryLoader,PyPDFLoader
 from langchain.text_splitters import RecursiveCharacterTextSplitter
 
 from app.common.logger import get_logger
