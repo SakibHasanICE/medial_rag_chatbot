@@ -9,7 +9,7 @@ logger = get_logger(__name__)
 #creating function for existing access to vectorstore
 def load_vector_store():
     try:
-        embedding|_model=get_embedding_model()
+        embedding_model=get_embedding_model()
 
         if os.path.exists(DB_FAISS_PATH):
             logger.info("loading existing vectorstore")
