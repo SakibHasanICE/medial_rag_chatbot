@@ -41,7 +41,7 @@ def index():
                 session["messages"]=messages
             except Exception as e:
                 error_msg= f"Error : {str(e)}"
-                return render_template("index.html", messages=session[messages],error=error_msg)
+                return render_template("index.html", messages=session["messages"],error=error_msg)
     
         return redirect(url_for("index"))
     return render_template("index.html", messages=session.get("messages",[]))
