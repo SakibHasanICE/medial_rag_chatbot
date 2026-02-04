@@ -1,4 +1,4 @@
-from langchain.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceHub
 from app.config.config import HF_TOKEN, HUGGINGFACE_REPO_ID
 
 from app.common.logger import get_logger
