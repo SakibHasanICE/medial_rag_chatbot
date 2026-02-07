@@ -6,4 +6,4 @@ pypdf
 huggingface-hub
 flasK
 python-dotenv
-
+sentence-transformers

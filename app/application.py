@@ -12,15 +12,15 @@ app.secret_key=os.urandom(24)
 
 # llm model gives me answer with /n but i need new line as a new line so this reason use markupsafe and nl2br function
 from markupsafe import Markup
-def nl2br(vakue):
-    return Markup(vakue.replace("\n", "<br>\n"))
+def nl2br(value):
+    return Markup(value.replace("\n", "<br>\n"))
 
 app.jinja_env.filters["nl2br"]=nl2br
 
 @app.route("/",methods=["GET","POST"])
 
 def index():
-    if "message" not in session:
+    if "messages" not in session:
         session["messages"]=[]
 
     if request.method=="POST":
@@ -28,15 +28,20 @@ def index():
 
         if user_input:
             messages=session["messages"]
-            messages.append({"role":"user","content":"user_input"})
+            messages.append({"role":"user","content":user_input})
             session["messages"]=messages
 
             try:
                 qa_chain=create_qa_chain()
-                response=qa_chain.invoke({"query":user_input})
-                result=response.get("result", "No response")
+                if qa_chain is None:
+                    raise Exception("Vectorstore or QA chain not available. Please ingest data first.")
+                response=qa_chain.invoke(user_input)
+                # result=response.get("result", "No response")
+                # Ensure we store a string (template filter expects a string)
+                if not isinstance(response, str):
+                    response = str(response)
 
-                messages.append({"role":"assistant","content":result})
+                messages.append({"role":"assistant","content":response})
                 
                 session["messages"]=messages
             except Exception as e:

@@ -1,9 +1,10 @@
 import os
+from pathlib import Path
 HF_TOKEN = os.environ.get("HF_TOKEN")
 HUGGINGFACEHUB_API_TOKEN = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
-
-HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3 "
-DB_FAISS_PATH="vectorstore/db_faiss"
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+HUGGINGFACE_REPO_ID="microsoft/Phi-3-mini-4k-instruct"
+DB_FAISS_PATH=os.path.join(BASE_DIR, "vectorstore", "db_faiss")
 DATA_PATH="data/"
 CHUNK_SIZE=500
 CHUNK_OVERLAP=50
